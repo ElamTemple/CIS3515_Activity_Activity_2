@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import android.content.Intent
+const val SIZE_KEY = "fdasf"
 
 class TextSizeActivity : AppCompatActivity() {
 
@@ -24,8 +26,14 @@ class TextSizeActivity : AppCompatActivity() {
 
             // TODO Step 2: Pass selected value back to activity that launched TextSizeActivity
             adapter = TextSizeAdapter(textSizes){
-
+                setResult(RESULT_OK,
+                    Intent().apply{
+                    putExtra(SIZE_KEY,it)
+                }
+                )
+                finish()
             }
+
             layoutManager = LinearLayoutManager(this@TextSizeActivity)
         }
 
